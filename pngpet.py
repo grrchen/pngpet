@@ -85,12 +85,12 @@ class PNGPetState(pg.sprite.Sprite):
         if animated_images_supported:
             for file_ext in ANIMATED_FILE_EXT:
                 if image_path.lower().endswith(file_ext):
-                    image = gif_pg.load(image_path, loops)
+                    image = gif_pg.load(image_path, loops).convert_alpha()
                     break
             else:
-                image = pg.image.load(image_path)
+                image = pg.image.load(image_path).convert_alpha()
         else:
-            image = pg.image.load(image_path)
+            image = pg.image.load(image_path).convert_alpha()
         return image
 
     def scale_image(self, image, screen_width=SCREEN_WIDTH, screen_height=SCREEN_HEIGHT):
